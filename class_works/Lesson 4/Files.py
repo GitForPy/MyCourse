@@ -1,37 +1,21 @@
+import pprint
 
-# открываем файл для чтения (опция r)
-# f = open('visit_log.csv', 'r')
-# f = open(r'resources\visit_log.csv', encoding='utf-8')
-f = open(r'../../../PycharmProjects/Нетология/resources/requirements.txt', encoding='utf-8')
-file = f.readlines()
-f.close()
-print(len(file))
+path = r'C:\Users\Александр\Desktop\Python Нетология 20\1.Основы Python\[BOOMINFO.RU] 4. Работа с датами в Python\Дополнительные материалы к уроку 4\transactions.tsv'
 
-s = set(file)
-print(len(s))
+total_running = 0
+counter_dates = 0
+d= {}
+with open(path, 'r', encoding='utf-8') as f:
+    for line in f:
+        counter_dates += 1
+        date, amount = line.strip().split()
+        total_running += int(amount)
+        d.setdefault(date, int(amount))
+        d[date] += int(amount)
+        print(f'{date}: {amount} and total is {total_running}')
 
-for line in s:
-    print(line.strip())
+avg = total_running/counter_dates
+print(f'Total is {total_running}')
+print('Avg is {:.0f} '.format(avg))
 
-
-f = open(r'../../../PycharmProjects/Нетология/resources/requirements_unique.txt', 'w', encoding='utf-8')  # открытие файла на запись
-f.writelines(s)  # записывает все уникальные записи разом
-f.close()
-
-'''
-def read(n, include_header=False):
-    f = open(r'resources\purchase_log.txt', encoding='utf-8')
-
-    if not include_header:
-        next(f)
-
-    for line in f.readlines()[:n]:
-        print(line.strip())
-
-    f.close()
-
-
-# read(5)  # вывести n строк с учетом заголовка
-read(5, include_header=True)  # вывести n строк с учетом заголовка
-
-'''
+pprint.pprint(d)

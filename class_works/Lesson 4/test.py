@@ -71,13 +71,77 @@
 # s[:3] == s[3:6]
 
 s = '1011101110111011101110111011101110111011'
-s = '10111011101110111011'
-s = '101101'
-s = '101101101'
-s = '101101101101'
-s = '11111111111111111111'
-s = '01000011'
-print('01000011' != s)
+
+
+# pattern = 'no pattern '
+# step = 3
+# for i in range(0, len(s)//2, step):
+#     print(i, s[:step])
+
+    
+# Шаг 1
+step = 3
+n = 3
+while True:
+    for i in range(0, len(s), step):
+        print(s[:step])
+        print(s[n * i + step:2*(n * i + step)])
+        break
+    break
+
+# Шаг 2
+# step = 3
+# n = 3
+# while True:
+#     for i in range(0, len(s), step):
+#         # print(s[:step])
+#         # print(s[n * i + step:2*(n * i + step)])
+#         if s[:step] != s[n * i + step:2 * (n * i + step)]:
+#             break
+#     break
+
+# # Шаг 3
+# n = 3
+# step = 3
+# pattern = ''
+# while True:
+#     for i in range(0, len(s), step):
+#         # print(s[:step])
+#         # print(s[n * i + step:2*(n * i + step)])
+#         pattern = s[:step]
+#         if pattern != s[n * i + step:2 * (n * i + step)]:
+#             break
+#     break
+# print(pattern)
+#
+# # Шаг 4 обнулять патерн
+# n = 3
+# step = 3
+# pattern = ''
+# while True:
+#     for i in range(0, len(s), step):
+#         # print(s[:step])
+#         # print(s[n * i + step:2*(n * i + step)])
+#         pattern = s[:step]
+#         if pattern != s[n * i + step:2 * (n * i + step)]:
+#             pattern = 'no pattern'
+#             step += 1
+#             break
+#     break
+# print(pattern)
+#
+
+
+
+
+# s = '10111011101110111011'
+# s = '101101'
+# s = '101101101'
+# s = '101101101101'
+# s = '11111111111111111111'
+# s = '01000011'
+# print('01000011' != s)
+#
 pattern_sequence = ''
 step = 3
 #while len(pattern_sequence) < len(s) // 2 or pattern_sequence != s:
@@ -92,6 +156,24 @@ while pattern_sequence != s:
 
 pattern = s[:step]
 print('Answer:', pattern)
+
+
+# первые три элемента сравниваем со следующими тремя; потом еще три с еще тремя;
+# Зачем нам так гонять цикл до конца строки, если уже на первом шаге понятно, что 3 это не переодичность.
+# Нужно step увеличить на единицу и запустить этот цикл заново, чтобы он начал с начала строки и взял последовательность
+# из 4 элементов (за шаблон)
+
+# Как распознать патерн  0000000?
+
+# Мы не знаем сколько итераций нам нужно, чтобы вычислить и поэтому можно в начале задать цикл While True
+# таким образом мы избавимся от нашей переменной флаг
+# Мы сможем в нужный момент сразу сделать брейк или континиу и у нас цикл прервется. Если мы нашли патерн
+# строку до конца и убедились в том, что этот патер действительно повторяется
+# То есть внешняя оболочка у нас получается While True а дальше мы задаем цикл for как раз таки для нахождения патерна
+# Цикл While нужен для того, чтобы повторять обход этой строки до тех пор пока мы не найдем патерн либо
+# не Пройдем всю строку и закончим.
+
+
 
 
 #         print(f'периодичность сигнала равна{n+i}')
