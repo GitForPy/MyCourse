@@ -1,4 +1,4 @@
-import pprint
+from pprint import pprint
 
 path = r'C:\Users\Александр\Desktop\Python Нетология 20\1.Основы Python\[BOOMINFO.RU] 4. Работа с датами в Python\Дополнительные материалы к уроку 4\transactions.tsv'
 
@@ -18,4 +18,5 @@ avg = total_running/counter_dates
 print(f'Total is {total_running}')
 print('Avg is {:.0f} '.format(avg))
 print('Max value is:', max(d.values()))
-pprint.pprint(d)
+pprint(sorted(d.items(), key=lambda x: -x[1]))
+
