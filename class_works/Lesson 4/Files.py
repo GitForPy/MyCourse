@@ -4,7 +4,7 @@ path = r'C:\Users\Александр\Desktop\Python Нетология 20\1.Ос
 
 total_running = 0
 counter_dates = 0
-d= {}
+d = {}
 with open(path, 'r', encoding='utf-8') as f:
     for line in f:
         counter_dates += 1
@@ -17,5 +17,5 @@ with open(path, 'r', encoding='utf-8') as f:
 avg = total_running/counter_dates
 print(f'Total is {total_running}')
 print('Avg is {:.0f} '.format(avg))
-
+print('Max value is:', max(d.values()))
 pprint.pprint(d)
