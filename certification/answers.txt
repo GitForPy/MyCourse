@@ -1,5 +1,5 @@
-1.
-2.
-3.
-4.
-5.
+1. D - 512
+2. A and B (better A but B not wrong)
+3. A - 125 (while False and we go to section else: 250//2 = 125)
+4. C - print(n, end=' ')
+5. E - NoneType
