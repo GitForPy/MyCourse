@@ -20,19 +20,16 @@ file.close()
 ids = []
 purchases = dict()
 for i, item in enumerate(data):
-    line = list(json.loads(item).values())
-    user_id = line[0]
-    value = line[1]
+    user_id, value = list(json.loads(item).values())
     if user_id in purchases.keys():
         ids.append(user_id)
         purchases[user_id].append(value)
     else:
         purchases[user_id] = [value]
-    if len(purchases[user_id]) > 2:
-        print(user_id, purchases[user_id])
+    # if len(purchases[user_id]) > 2:
+    #     print(user_id, purchases[user_id])
 
 
-print(i)
 pprint(len(purchases))  # 99517
 pprint(len(ids))  # 482
 pprint(99999 - 99517)  # 99517
@@ -41,15 +38,15 @@ pprint(99999 - 99517)  # 99517
 
 output = open('resources/funnel.csv', 'w', encoding='utf-8')
 with open('resources/visit_log.csv', encoding='utf-8') as file_visits:
+    header = file_visits.readline()
+    output.write(header.strip() + ',categories\n')
     line = file_visits.readline()
-    line = file_visits.readline()
-    while len(line) > 1:
-        user_id = line[0]
-        source = line[1].strip()
+    while line:
+        user_id, source = line.strip().split(',')
         if user_id in purchases.keys():
             new_line = user_id + ',' + source + ',' + ','.join(purchases[user_id]) + '\n'
             output.write(new_line)
-        line = file_visits.readline().split(',')
+        line = file_visits.readline()
 output.close()
 
 
