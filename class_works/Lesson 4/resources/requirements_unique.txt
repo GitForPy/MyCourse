@@ -52,7 +52,7 @@ ruamel-yaml==0.15.80
 toolz==0.10.0
 certifi==2019.11.28
 sortedcontainers==2.1.0
-cryptography==2.8
+cryptography==3.2
 locket==0.2.0
 jupyter-core==4.6.3
 python-json-logger==0.1.11
