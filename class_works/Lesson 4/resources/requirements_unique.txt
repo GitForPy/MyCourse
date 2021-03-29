@@ -125,7 +125,7 @@ jsonschema==3.2.0
 decorator==4.4.2
 cffi==1.14.0
 networkx==2.4
-Pygments==2.6.1
+Pygments==2.7.4
 Cython==0.29.15
 testpath==0.4.4
 jedi==0.16.0
